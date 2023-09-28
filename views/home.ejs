@@ -1,0 +1,101 @@
+<%- include ("partials/header.ejs") %>
+<nav class="navbar bg-body-tertiary">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="/"><img src="https://www.canva.com/design/DAFuaeYm0Dc/view" width="50px"></a>
+  </div>
+</nav>
+
+<div class="px-4 py-5 my-5 text-center cassey">
+  <img class="landingPage" src="/backend/9.5 recipe/public/images/cassey's kitchen.png" alt="landing page background">
+  <h1 class="display-5 fw-bold text-body-emphasis">Cassey's Kitchen</h1>
+  <div class="col-lg-6 mx-auto">
+    <p class="lead mb-4">Cook your ❤️ out</p>
+    <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+      <button type="button" class="btn btn-success btn-lg px-4 gap-3" fdprocessedid="l5yqqi">Primary button</button>
+      <button type="button" class="btn btn-outline-success btn-lg px-4" fdprocessedid="ndafo">Secondary</button>
+    </div>
+  </div>
+</div>
+<div></div>
+
+<div style="text-align: center" class="container border border-success">
+  <h2>Featured Recipes</h2>
+   <div class="row" style="padding: 2rem; height: 35rem;">
+      <% recipes.forEach(recipe => { %>
+      <div class="col-4">
+       <div class="card" width="40rem" style="height: 32rem;">
+         <img src=<%= recipe.image %> class="card-img-top" width="45rem" alt=<%= recipe.title %>>
+          <div class="card-body">
+            <h5 class="card-title"> <%= recipe.title %> </h5>
+            <p class="card-text"> <%- recipe.summary.substring(0,150)+("...") %></p>  
+          </div>
+           <div class="card-footer">
+           <form action="/recipe/<%= recipe.title %>" method="post">
+            <button type="submit" class="btn btn-sm btn-success" name="recipeid" value=<%= recipe.id %> >Read More</button>
+           </form>
+           </div>
+        </div>
+      </div>
+      <% }); %>
+  </div>
+</div>
+
+<div class="container my-5">
+  <div class="position-relative p-5 text-center text-muted bg-body">
+    <img src="https://img.icons8.com/external-flaticons-flat-flat-icons/64/external-meals-new-normal-flaticons-flat-flat-icons-2.png" width="100px" height="100px" alt="meal icon">
+    <h1 class="text-body-emphasis">Wide Range of Cuisine, Diet and Type of Meals</h1>
+    <p class="col-lg-6 mx-auto mb-4">
+      Search for the perfect recipe for your diet
+    </p>
+    <form action="/search">
+    <button class="btn btn-success px-5 mb-5" type="submit">Discover</button>
+    </form>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <h2>Fitness Calculator</h2>
+    <div class="col-6">
+      <div>
+        <input type="number" placeholder="Weight in kgs" id="weight" onkeypress="return /[0-9]/i.test(event.key)">
+      </div>
+      <div>
+        <input type="number" placeholder="Height in cm" id="height" onkeypress="return /[0-9]/i.test(event.key)">
+      </div>
+      <div>
+        <input type="number" placeholder="Age" id="age" onkeypress="return /[0-9]/i.test(event.key)">
+      </div>
+      <div>
+        <select id="gender">
+          <option value="">Gender</option>
+          <option value="male">Male</option>
+          <option value="female">Female</option>
+        </select>
+      </div>
+      <div>
+        <select id="activity" onkeypress="">
+          <option value="">Level of Activity</option>
+          <option value="sedentary">Sedentary</option>
+          <option value="light">Light</option>
+          <option value="moderate">Moderate</option>
+          <option value="active">Active</option>
+          <option value="extreme">Extreme</option>
+        </select>
+      </div>
+        <br>
+      <div>
+        <button class="btn btn-success" id="calc">Calculate</button>
+      </div>
+        
+  
+    </div>
+    <div class="col-6">
+     <p id="result"></p>
+      
+    </div>
+
+  </div>
+</div>
+
+<%- include ("partials/footer.ejs") %>

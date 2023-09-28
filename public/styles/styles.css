@@ -1,0 +1,17 @@
+.cassey{
+    background-image:url("https://www.canva.com/design/DAFtyyI7CtI/view");
+}
+
+.landingPage{
+    position: absolute;
+    z-index: -1;
+}
+
+.card-image-top{
+    max-width: 20%;
+
+}
+
+.searchRecipe{
+    margin-top: 5rem;
+}

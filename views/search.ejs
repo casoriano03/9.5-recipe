@@ -1,0 +1,123 @@
+<%- include ("partials/header.ejs") %>
+
+<div>
+    <div style="text-align: center;">
+    <h3>Search For A Recipe</h3>
+    </div>
+<br>
+    <div style="width: 70%; text-align: center; position: relative;left: 15%;" >
+        <form action="/search" method="post">
+            <input type="text" name="recipe" placeholder="Enter Recipe Name" style="width: 100%;" >
+            <select name="diet" class="form-select">
+                <option value="false">Diet</option>
+                <option value="glutenFree">Gluten Free</option>
+                <option value="ketogenic">Ketogenic</option>
+                <option value="Vegetarian">Vegetarian</option>
+                <option value="Lacto-Vegetarian">Lacto-Vegetarian</option>
+                <option value="Ovo-Vegetarian">Ovo-Vegetarian</option>
+                <option value="Vegan">Vegan</option>
+                <option value="Pescetarian">Pescetarian</option>
+                <option value="Paleo">Paleo</option>
+                <option value="Primal">Primal</option>
+                <option value="lowFodmap">Low FODMAP</option>
+                <option value="Whole30">Whole30</option>
+            </select>
+            <select name="cuisine" class="form-select">
+                <option value="false">Cuisine</option>
+                <option value="african"> African</option>
+                <option value="asian">Asian</option>
+                <option value="American">American</option>
+                <option value="British">British</option>
+                <option value="Cajun">Cajun</option>
+                <option value="Caribbean">Caribbean</option>
+                <option value="Chinese">Chinese</option>
+                <option value="easternEuropean">Eastern European</option>
+                <option value="European">European</option>
+                <option value="French">French</option>
+                <option value="German">German</option>
+                <option value="Greek">Greek</option>
+                <option value="Indian">Indian</option>
+                <option value="Irish">Irish</option>
+                <option value="Italian">Italian</option>
+                <option value="Japanese">Japanese</option>
+                <option value="Jewish">Jewish</option>
+                <option value="Korean">Korean</option>
+                <option value="latinAmerican">Latin American</option>
+                <option value="Mediterranean">Mediterranean</option>
+                <option value="Mexican">Mexican</option>
+                <option value="middleEastern">Middle Eastern</option>
+                <option value="Nordic">Nordic</option>
+                <option value="Southern">Southern</option>
+                <option value="Spanish">Spanish</option>
+                <option value="Thai">Thai</option>
+                <option value="Vietnamese">Vietnamese</option>
+            </select>
+            <select name="type" class="form-select">
+                <option value="false">Meal Type</option>
+                <option value="mainCourse">Main Course</option>
+                <option value="sideDish">Side Dish</option>
+                <option value="dessert">Dessert</option>
+                <option value="appetizer">Appetizer</option>
+                <option value="salad">Salad</option>
+                <option value="bread">Bread</option>
+                <option value="breakfast">Breakfast</option>
+                <option value="soup">Soup</option>
+                <option value="beverage">Beverage</option>
+                <option value="sauce">Sauce</option>
+                <option value="marinade">Marinade</option>
+                <option value="fingerfood">Fingerfood</option>
+                <option value="snack">Snack</option>
+                <option value="drink">Drink</option>   
+            </select>
+            <select name="intolerances" class="form-select">
+                <option value="false">Intolerances</option>
+                <option value="Dairy">Dairy</option>
+                <option value="Egg">Egg</option>
+                <option value="Gluten">Gluten</option>
+                <option value="Grain">Grain</option>
+                <option value="Peanut">Peanut</option>
+                <option value="Seafood">Seafood</option>
+                <option value="Sesame">Sesame</option>
+                <option value="Shellfish">Shellfish</option>
+                <option value="Soy">Soy</option>
+                <option value="Sulfite">Sulfite</option>
+                <option value="treeNut">Tree Nut</option>
+                <option value="Wheat">Wheat</option> 
+            </select> 
+            <br>
+            <button class="btn btn-success" type="submit">Check Recipe</button>
+        </form>
+    </div>
+    <div>
+        <div class="container searchRecipe" >
+            <div class="list-group">
+            <% if (searchRecipes.length>0){ %>
+            <% searchRecipes.forEach(searchRecipe => { %>
+                <div class="d-flex w-100 justify-content-between">
+                      <div >
+                        <img src="<%= searchRecipe.image %>" alt="">
+                        
+                      </div>
+                      <div class="fw-bold" style="text-align: center;">
+                        <h3><%= searchRecipe.title %></h3> 
+                        <form action="/recipe/<%= searchRecipe.title %>" method="post">
+                         <button type="submit" class="btn btn-sm btn-success" name="recipeid" value=<%= searchRecipe.id %> >Read More</button>
+                        </form>
+                      </div>
+                      <div>
+                       
+                      </div>
+                </div>
+            <% }); %>
+          <% } %>
+           
+          </div>
+    </div>
+
+</div>
+
+
+
+
+
+<%- include ("partials/footer.ejs") %>
